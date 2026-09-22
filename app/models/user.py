@@ -4,7 +4,7 @@ from sqlalchemy import Boolean, DateTime, Index, String, text
 from sqlalchemy.dialects.mysql import BIGINT
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database.base import Base
+from ..database.base import Base
 
 
 class User(Base):

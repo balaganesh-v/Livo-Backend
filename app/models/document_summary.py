@@ -4,7 +4,7 @@ from sqlalchemy import DateTime, ForeignKey, Integer, String, text
 from sqlalchemy.dialects.mysql import BIGINT, LONGTEXT
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from database.base import Base
+from ..database.base import Base
 
 
 class DocumentSummary(Base):

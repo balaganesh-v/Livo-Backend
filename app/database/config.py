@@ -1,5 +1,6 @@
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+from sqlalchemy.engine import URL
 
 
 class Settings(BaseSettings):
@@ -7,7 +8,7 @@ class Settings(BaseSettings):
     db_host: str = Field(default="localhost", validation_alias="DB_HOST")
     db_port: int = Field(default=3306, validation_alias="DB_PORT")
     db_name: str = Field(
-        default="ai_folder_organizer",
+        default="ai_folder_organizer_mvp",
         validation_alias="DB_NAME",
     )
     db_user: str = Field(default="root", validation_alias="DB_USER")
@@ -21,13 +22,15 @@ class Settings(BaseSettings):
     )
 
     @property
-    def database_url(self) -> str:
-        """Return the SQLAlchemy database connection URL."""
-        return (
-            f"mysql+pymysql://"
-            f"{self.db_user}:{self.db_password}@"
-            f"{self.db_host}:{self.db_port}/"
-            f"{self.db_name}"
+    def database_url(self) -> URL:
+        """Build the database URL without exposing or misparsing credentials."""
+        return URL.create(
+            drivername="mysql+pymysql",
+            username=self.db_user,
+            password=self.db_password,
+            host=self.db_host,
+            port=self.db_port,
+            database=self.db_name,
         )
 
 
