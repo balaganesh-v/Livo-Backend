@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from app.file_processing.scanner.scanner import scan_folder
+from app.file_processing.scanner.file_scanner import scan_folder
 
 
 class ScannerRepository:

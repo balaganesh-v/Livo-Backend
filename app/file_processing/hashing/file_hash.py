@@ -1,11 +1,8 @@
-"""Chunked file hashing helpers."""
-
 import hashlib
 from pathlib import Path
 
 
 def calculate_file_hash(file_path: str | Path, chunk_size: int = 1024 * 1024) -> str:
-    """Calculate a file's SHA-256 digest using bounded memory."""
     if chunk_size <= 0:
         raise ValueError("chunk_size must be positive")
 

@@ -1,8 +1,8 @@
 """Extract filesystem metadata without reading file contents."""
 
-from dataclasses import dataclass
-from datetime import datetime
 import mimetypes
+from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -30,7 +30,7 @@ def extract_file_metadata(file_path: str | Path) -> FileMetadata:
         extension=path.suffix.lower() or None,
         mime_type=mime_type,
         size_bytes=stat.st_size,
-        file_created_at=datetime.fromtimestamp(created_timestamp),
-        file_modified_at=datetime.fromtimestamp(stat.st_mtime),
-        scanned_at=datetime.now(),
+        file_created_at=datetime.fromtimestamp(created_timestamp, tz=timezone.utc),
+        file_modified_at=datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc),
+        scanned_at=datetime.now(timezone.utc),
     )
