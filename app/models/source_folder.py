@@ -43,6 +43,8 @@ class SourceFolder(Base):
     )
 
     status: Mapped[SourceFolderStatus] = mapped_column(
+        # The existing MySQL enum columns store member names (ACTIVE, FAILED,
+        # etc.), which is SQLAlchemy's default for Python enums.
         SAEnum(SourceFolderStatus),
         nullable=False,
         default=SourceFolderStatus.ACTIVE,

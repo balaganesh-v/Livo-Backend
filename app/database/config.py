@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     )
     db_user: str = Field(default="root", validation_alias="DB_USER")
     db_password: str = Field(default="", validation_alias="DB_PASSWORD")
+    # Temporary identity for the scan API until authentication is implemented.
+    dev_user_email: str = Field(
+        default="development@local.invalid",
+        validation_alias="DEV_USER_EMAIL",
+    )
 
     model_config = SettingsConfigDict(
         env_file=".env",

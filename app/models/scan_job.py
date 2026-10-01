@@ -33,6 +33,8 @@ class ScanJob(Base):
     )
 
     status: Mapped[ScanJobStatus] = mapped_column(
+        # Keep enum labels aligned with the existing MySQL column, which stores
+        # Python enum member names (PENDING, RUNNING, FAILED, etc.).
         SAEnum(ScanJobStatus),
         nullable=False,
         default=ScanJobStatus.PENDING,
