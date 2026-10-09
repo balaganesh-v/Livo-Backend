@@ -18,7 +18,6 @@ class Settings(BaseSettings):
         default="development@local.invalid",
         validation_alias="DEV_USER_EMAIL",
     )
-
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",

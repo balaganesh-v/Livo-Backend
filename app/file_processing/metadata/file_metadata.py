@@ -1,8 +1,8 @@
 """Extract filesystem metadata without reading file contents."""
 
+import mimetypes
 from dataclasses import dataclass
 from datetime import datetime
-import mimetypes
 from pathlib import Path
 
 

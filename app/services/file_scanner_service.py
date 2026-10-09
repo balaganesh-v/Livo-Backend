@@ -1,9 +1,9 @@
 """Coordinate file discovery, metadata extraction, and hashing."""
 
-from dataclasses import dataclass
 import logging
+from collections.abc import Callable
+from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable
 
 from app.file_processing.hashing.file_hash import calculate_file_hash
 from app.file_processing.metadata.file_metadata import (

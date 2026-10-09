@@ -1,8 +1,8 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models.file import File
 from app.file_processing.metadata.file_metadata import FileMetadata
+from app.models.file import File
 
 
 class FileRepository:

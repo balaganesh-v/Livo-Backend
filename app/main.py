@@ -6,9 +6,10 @@ from fastapi import FastAPI
 from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.database.connection import engine
+from app.controllers.ai_analysis_controller import router as ai_analysis_router
 from app.controllers.scanner_controller import router as scanner_router
 from app.controllers.system_controller import router as system_router
+from app.database.connection import engine
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +35,7 @@ app = FastAPI(
 )
 
 app.include_router(scanner_router)
+app.include_router(ai_analysis_router)
 app.include_router(system_router)
 
 if __name__ == "__main__":

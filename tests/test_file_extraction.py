@@ -1,13 +1,16 @@
 """Focused tests for Day 5 extraction helpers."""
 
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 
 from docx import Document
 from pypdf import PdfWriter
 
-from app.file_processing.extraction.extractor import detect_file_type, extract_file_content
+from app.file_processing.extraction.extractor import (
+    detect_file_type,
+    extract_file_content,
+)
 from app.file_processing.extraction.text_extractor import extract_text_file
 from app.services.file_scanner_service import FileScannerService
 
