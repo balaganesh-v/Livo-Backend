@@ -1,14 +1,7 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
-from sqlalchemy import (
-    BigInteger,
-    DateTime,
-    ForeignKey,
-    Index,
-    String,
-    Text,
-    text,
-)
+from sqlalchemy import (BigInteger, DateTime, ForeignKey, Index, String, Text,
+                        text)
 from sqlalchemy.dialects.mysql import BIGINT as MySQLBIGINT
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -69,7 +62,7 @@ class FileContent(Base):
         DateTime,
         nullable=False,
         server_default=text("CURRENT_TIMESTAMP"),
-        onupdate=datetime.utcnow,
+        onupdate=lambda: datetime.now(timezone.utc).replace(tzinfo=None),
     )
 
     file = relationship(

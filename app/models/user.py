@@ -21,6 +21,11 @@ class User(Base):
         nullable=False,
     )
 
+    username: Mapped[str | None] = mapped_column(
+        String(50),
+        nullable=True,
+    )
+
     email: Mapped[str] = mapped_column(
         String(255),
         nullable=False,
@@ -87,4 +92,13 @@ class User(Base):
         cascade="all, delete-orphan",
     )
 
-    __table_args__ = (Index("idx_users_is_active", "is_active"),)
+    refresh_sessions = relationship(
+        "RefreshSession",
+        back_populates="user",
+        cascade="all, delete-orphan",
+    )
+
+    __table_args__ = (
+        Index("idx_users_is_active", "is_active"),
+        Index("uq_users_username", "username", unique=True),
+    )
