@@ -1,3 +1,3 @@
-from .main import app
+"""AI Folder Organizer backend application package."""
 
 __all__ = ["app"]

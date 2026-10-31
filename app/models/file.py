@@ -123,6 +123,13 @@ class File(Base):
         cascade="all, delete-orphan",
     )
 
+    content = relationship(
+        "FileContent",
+        back_populates="file",
+        uselist=False,
+        cascade="all, delete-orphan",
+    )
+
     organization_plan_items = relationship(
         "OrganizationPlanItem",
         back_populates="file",
