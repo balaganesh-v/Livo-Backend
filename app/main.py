@@ -6,8 +6,9 @@ from sqlalchemy import text
 from sqlalchemy.exc import SQLAlchemyError
 
 from app import models  # noqa: F401
+from app.controllers.auth_controller import router as auth_router
 from app.controllers.scanner_controller import router as scanner_router
-from app.controllers.system_controller import router as system_router
+from app.controllers.app_controller import router as system_router
 from app.database.base import Base
 from app.database.connection import engine
 
@@ -34,6 +35,7 @@ app = FastAPI(
 
 app.include_router(system_router)
 app.include_router(scanner_router)
+app.include_router(auth_router)
 
 
 if __name__ == "__main__":
