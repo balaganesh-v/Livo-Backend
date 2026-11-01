@@ -8,6 +8,7 @@ from .file_ai_analysis import FileAIAnalysis
 from .file_content import FileContent
 from .organization_plan import OrganizationPlan
 from .organization_plan_item import OrganizationPlanItem
+from .password_reset_token import PasswordResetToken
 from .refresh_session import RefreshSession
 from .scan_job import ScanJob
 from .source_folder import SourceFolder
@@ -24,6 +25,7 @@ __all__ = [
     "FileContent",
     "OrganizationPlan",
     "OrganizationPlanItem",
+    "PasswordResetToken",
     "RefreshSession",
     "ScanJob",
     "SourceFolder",

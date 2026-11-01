@@ -13,6 +13,26 @@ class Settings(BaseSettings):
     )
     db_user: str = Field(default="root", validation_alias="DB_USER")
     db_password: str = Field(default="", validation_alias="DB_PASSWORD")
+    access_token_minutes: int = Field(
+    default=30,
+    validation_alias="ACCESS_TOKEN_MINUTES",
+)
+    jwt_secret: str = Field(
+    ...,
+    validation_alias="JWT_SECRET",
+)
+    # SMTP configuration is optional at process startup so unrelated routes can
+    # still run when mail is not configured. Reset email requests require these.
+    smtp_host: str | None = Field(default=None, validation_alias="SMTP_HOST")
+    smtp_port: int = Field(default=587, validation_alias="SMTP_PORT")
+    smtp_username: str | None = Field(default=None, validation_alias="SMTP_USERNAME")
+    smtp_password: str | None = Field(default=None, validation_alias="SMTP_PASSWORD")
+    smtp_from_email: str | None = Field(default=None, validation_alias="SMTP_FROM_EMAIL")
+    smtp_use_tls: bool = Field(default=True, validation_alias="SMTP_USE_TLS")
+
+    reset_token_secret: str | None = Field(
+        default=None, validation_alias="RESET_TOKEN_SECRET"
+    )
 
     model_config = SettingsConfigDict(
         env_file=".env",
