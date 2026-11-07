@@ -26,6 +26,7 @@ class ScannedFileResponse(BaseModel):
 
 class FileScanResponse(BaseModel):
     folder_path: str
+    source_folder_id: int
     files_discovered: int
     records_persisted: int
     total_files: int

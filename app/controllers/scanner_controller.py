@@ -70,6 +70,7 @@ def scan_selected_folder(
 
     return FileScanResponse(
         folder_path=scan_result.folder_path,
+        source_folder_id=scan_result.source_folder_id,
         files_discovered=scan_result.total_files,
         records_persisted=scan_result.saved_files,
         total_files=scan_result.total_files,
