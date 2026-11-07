@@ -25,6 +25,7 @@ class ScannedFile:
 @dataclass
 class FileScanResult:
     folder_path: str
+    source_folder_id: int
     total_files: int
     processed_files: int
     saved_files: int
@@ -122,6 +123,7 @@ class ScannerService:
         # Step 4: Return the scan summary.
         return FileScanResult(
             folder_path=folder_path,
+            source_folder_id=source_folder.id,
             total_files=len(discovered_files),
             processed_files=processed_files,
             saved_files=saved_files,
