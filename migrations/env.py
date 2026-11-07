@@ -1,12 +1,11 @@
 from logging.config import fileConfig
 
-import models  # noqa: F401
 from alembic import context
-from database.base import Base
-from database.config import settings
-from database.connection import engine
 
+from app import models  # noqa: F401
 from app.database.base import Base
+from app.database.config import settings
+from app.database.connection import engine
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

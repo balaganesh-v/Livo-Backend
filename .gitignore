@@ -11,8 +11,15 @@ env/
 .idea/
 
 .pytest_cache/
+.pytest-tmp/
+.ruff_cache/
 .coverage
 htmlcov/
 
 .DS_Store
 Thumbs.db
+
+
+# Python test artifacts
+.pytest_cache/
+.pytest-*/
